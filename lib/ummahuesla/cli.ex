@@ -5,6 +5,7 @@ defmodule Ummahuesla.CLI do
     |> get_team_name
     |> get_email
     |> get_tshirt_size
+    |> Ummahuesla.FormsInteractor.submit
     |> IO.inspect
   end
 
@@ -21,6 +22,7 @@ defmodule Ummahuesla.CLI do
   end
 
   defp ask_question(answers, key, question) do
+    IO.puts ""
     name = IO.gets question <> "\n"
     Map.put(answers, key, String.trim(name))
   end
