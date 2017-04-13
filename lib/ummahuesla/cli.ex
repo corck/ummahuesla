@@ -28,6 +28,10 @@ defmodule Ummahuesla.CLI do
     ask_question(answers, :team_name, "Whats your team name")
   end
 
+  defp get_project_desc(answers) do
+    ask_question(answers, :project, "We are going to umma hüsla this project")
+  end
+
 
   defp ask_question(answers, key, question) do
     IO.puts ""
