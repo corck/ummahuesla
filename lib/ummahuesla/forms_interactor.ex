@@ -3,7 +3,8 @@ defmodule Ummahuesla.FormsInteractor do
   @form_ids %{
     name: :'entry.1650680323',
     email: :'entry.1458164473',
-    team: :'entry.1855903074'
+    team: :'entry.1855903074',
+    team_name: :'entry.1161251632'
   }
   def form_ids, do: @form_ids
 
