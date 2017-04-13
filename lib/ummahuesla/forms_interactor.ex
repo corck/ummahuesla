@@ -1,9 +1,11 @@
 defmodule Ummahuesla.FormsInteractor do
 
   @form_ids %{
-    team: :'entry.701965180',
-    email: :'entry.1028970138'
+    name: :'entry.1650680323',
+    email: :'entry.1458164473',
+    team: :'entry.1855903074'
   }
+  def form_ids, do: @form_ids
 
   def submit(data \\ %{}) do
     data
@@ -12,7 +14,7 @@ defmodule Ummahuesla.FormsInteractor do
   end
 
   defp post_data(data) do
-    form_id = "1FAIpQLSflXpkRg2xr41IFUlmY9SKunQ4vFdQYmk50CfirfnLhd7alhg"
+    form_id = "1FAIpQLSedG8w0bxHmZzvFu9_NKWeZZiXOBkPThD7aDyfvuGn-ZTpQFQ"
     url = "https://docs.google.com/forms/d/e/#{form_id}/formResponse"
     say_thanks HTTPoison.post url, {:form, data}, []
   end
@@ -26,6 +28,7 @@ defmodule Ummahuesla.FormsInteractor do
   end
 
   defp say_thanks { :ok, response } do
+    IO.puts inspect response
     IO.puts ""
     IO.puts ""
     IO.puts ""
