@@ -34,13 +34,13 @@ defmodule Ummahuesla.CLI do
     q = "hugo"
 
     IO.puts question
-    answer = IO.gets "[1,2,3]" <> "\n"
-    key = parse_team(String.to_integer(String.trim(answer)))
-    Map.put(answers, key, '')
+    input = IO.gets "[1,2,3]" <> "\n"
+    answer = parse_team(String.to_integer(String.trim(input)))
+    Map.put(answers, :team, answer)
   end
 
   defp parse_team(n) when n < 4 do
-    team_key(n)
+    team_answer(n)
   end
 
   defp parse_team(n) do
@@ -49,10 +49,11 @@ defmodule Ummahuesla.CLI do
     parse_team(String.to_integer(String.trim(answer)))
   end
 
-  defp team_key(n) do
-    form_ids = Ummahuesla.FormsInteractor.form_ids
-    key = Map.get(form_ids, :team)
-    String.to_atom(Atom.to_string(key) <> "_" <> Integer.to_string(n))
+  defp team_answer(n) do
+    answers = ["still searching for a team",
+    "overrated. Me is the only team I want",
+    "already. have. one."]
+    Enum.at(answers, n-1)
   end
 
   defp ask_question(answers, key, question) do
