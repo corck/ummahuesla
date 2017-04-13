@@ -5,6 +5,7 @@ defmodule Ummahuesla.CLI do
     |> get_name
     #|> get_email
     #|> Ummahuesla.TeamQuestions.get_team
+    |> Ummahuesla.TeamQuestions.enough_work_for
     |> get_team_name
     #|> get_tshirt_size
     |> Ummahuesla.FormsInteractor.submit
