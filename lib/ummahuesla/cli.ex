@@ -7,8 +7,9 @@ defmodule Ummahuesla.CLI do
     #|> Ummahuesla.TeamQuestions.get_team
     #|> get_team_name
     #|> Ummahuesla.TeamQuestions.enough_work_for
-    |> get_project_desc
-    |> get_searching_for
+    #|> get_project_desc
+    #|> get_searching_for
+    |> get_gender
     #|> get_tshirt_size
     |> Ummahuesla.FormsInteractor.submit
     #|> IO.inspect
@@ -35,27 +36,39 @@ defmodule Ummahuesla.CLI do
   end
 
   defp get_searching_for(answers) do
+     question = '''
+        What's your gender
+
+        1) hardware
+        2) ideas
+        3) love
+
+      '''
+      IO.puts question
+
+      input = IO.gets "[1,2,3]" <> "\n"
+      answer = String.to_integer(String.trim(input))
+      alist = ["hardware", "ideas", "love"]
+      answer_value = save_answer(alist, answer)
+      Map.put(answers, :searching_for, answer_value)
+  end
+
+  defp get_gender(answers) do
     question = '''
       We are going to umma hüsla a project and searching for
 
-      1) hardware
-      2) ideas
-      3) love
+      1) Girl
+      2) Dude
+      3) neither & nor
 
     '''
     IO.puts question
 
     input = IO.gets "[1,2,3]" <> "\n"
     answer = String.to_integer(String.trim(input))
-    alist = ["hardware", "ideas", "love"]
+    alist = ["Girl", "Dude", "neither & nor"]
     answer_value = save_answer(alist, answer)
-    Map.put(answers, :searching_for, answer_value)
-  end
-
-  defp parse_team(n) do
-    IO.puts ""
-    answer = IO.gets "Please answer with '1', '2' or '3'" <> "\n"
-    parse_team(String.to_integer(String.trim(answer)))
+    Map.put(answers, :gender, answer_value)
   end
 
   defp ask_question(answers, key, question) do
