@@ -10,7 +10,8 @@ defmodule Ummahuesla.CLI do
     #|> get_project_desc
     #|> get_searching_for
     |> get_gender
-    |> get_size
+    #|> get_size
+    |> get_profession
     |> Ummahuesla.FormsInteractor.submit
     #|> IO.inspect
   end
@@ -32,25 +33,43 @@ defmodule Ummahuesla.CLI do
   end
 
   defp get_searching_for(answers) do
-    alist = ["hardware", "ideas", "love"]
-    question =  "We are going to umma hüsla a project and searching for?"
-    answer_value = Ummahuesla.QuestionFormatter.ask_option_question(alist, question)
-    Map.put(answers, :searching_for, answer_value)
+    p = %{ q: "We are going to umma hüsla a project and searching for?",
+          options: ["hardware", "ideas", "love"],
+          key: :gender
+        }
+    ask_options(answers, p)
   end
 
   defp get_gender(answers) do
-    alist = ["Girl", "Dude", "neither & nor"]
-    answer_value = Ummahuesla.QuestionFormatter.ask_option_question(alist, "What's your gender?")
-    Map.put(answers, :gender, answer_value)
+    p = %{ q: "What's your gender?",
+          options: ["Girl", "Dude", "neither & nor"],
+          key: :gender
+        }
+    ask_options(answers, p)
   end
 
   defp get_size(answers) do
-    alist = ["S", "M", "L", "XL", "Don't wanna talk about it"]
-    answer_value = Ummahuesla.QuestionFormatter.ask_option_question(alist, "T-Shirt Size?")
-    Map.put(answers, :size, answer_value)
+    p = %{ q: "T-Shirt Size?",
+          options: ["S", "M", "L", "XL", "Don't wanna talk about it"],
+          key: :size
+        }
+    ask_options(answers, p)
+  end
+
+  defp get_profession(answers) do
+    p = %{ q: "what's your profession",
+          options: ["logic things", "pretty things", "neither & nor"],
+          key: :profession
+        }
+    ask_options(answers, p)
   end
 
   defp ask_option_question(alist, question) do
     Ummahuesla.QuestionFormatter.ask_option_question(alist, question)
+  end
+
+  defp ask_options(answers, %{q: question, options: list, key: key}) do
+    answer_value = Ummahuesla.QuestionFormatter.ask_option_question(list, question)
+    Map.put(answers, key, answer_value)
   end
 end
