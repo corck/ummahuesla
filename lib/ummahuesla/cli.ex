@@ -3,12 +3,12 @@ defmodule Ummahuesla.CLI do
   def run do
     %{}
     |> get_name
-    #|> get_email
-    #|> Ummahuesla.TeamQuestions.get_team
-    #|> get_team_name
-    #|> Ummahuesla.TeamQuestions.enough_work_for
-    #|> get_project_desc
-    #|> get_searching_for
+    |> get_email
+    |> Ummahuesla.TeamQuestions.get_team
+    |> get_team_name
+    |> Ummahuesla.TeamQuestions.enough_work_for
+    |> get_project_desc
+    |> get_searching_for
     |> get_gender
     #|> get_tshirt_size
     |> Ummahuesla.FormsInteractor.submit
@@ -36,38 +36,24 @@ defmodule Ummahuesla.CLI do
   end
 
   defp get_searching_for(answers) do
-     question = '''
-        What's your gender
+    alist = ["hardware", "ideas", "love"]
 
-        1) hardware
-        2) ideas
-        3) love
+    IO.puts "We are going to umma hüsla a project and searching for?"
+    options_question(alist)
 
-      '''
-      IO.puts question
-
-      input = IO.gets "[1,2,3]" <> "\n"
-      answer = String.to_integer(String.trim(input))
-      alist = ["hardware", "ideas", "love"]
-      answer_value = save_answer(alist, answer)
-      Map.put(answers, :searching_for, answer_value)
+    input = IO.gets "[1,2,3]" <> "\n"
+    answer_value = save_answer(alist, cast_input(input))
+    Map.put(answers, :searching_for, answer_value)
   end
 
   defp get_gender(answers) do
-    question = '''
-      We are going to umma hüsla a project and searching for
+    alist = ["Girl", "Dude", "neither & nor"]
 
-      1) Girl
-      2) Dude
-      3) neither & nor
-
-    '''
-    IO.puts question
+    IO.puts "What's your gender?"
+    options_question(alist)
 
     input = IO.gets "[1,2,3]" <> "\n"
-    answer = String.to_integer(String.trim(input))
-    alist = ["Girl", "Dude", "neither & nor"]
-    answer_value = save_answer(alist, answer)
+    answer_value = save_answer(alist, cast_input(input))
     Map.put(answers, :gender, answer_value)
   end
 
@@ -85,5 +71,20 @@ defmodule Ummahuesla.CLI do
     IO.puts ""
     answer = IO.gets "Please answer with #{Enum.join(1..(n-2), ", ")} or #{length(list)}" <> "\n"
     save_answer(list, String.to_integer(String.trim(answer)))
+  end
+
+  defp options_question(list) do
+    list
+      |> Enum.with_index
+      |> Enum.each(fn({x, i}) ->
+        IO.puts("#{i+1}) #{x}")
+      end)
+    IO.puts ""
+  end
+
+  defp cast_input(input) do
+    input
+    |> String.trim
+    |> String.to_integer
   end
 end
