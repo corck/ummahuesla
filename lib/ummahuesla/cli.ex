@@ -16,81 +16,41 @@ defmodule Ummahuesla.CLI do
   end
 
   defp get_name(answers) do
-    ask_question(answers, :name, "Whats your name")
+    Ummahuesla.QuestionFormatter.ask_question(answers, :name, "Whats your name")
   end
 
   defp get_email(answers) do
-    ask_question(answers, :email, "Whats your contact email")
+    Ummahuesla.QuestionFormatter.ask_question(answers, :email, "Whats your contact email")
   end
 
   defp get_team_name(answers) do
-    ask_question(answers, :team_name, "Whats your team name")
+    Ummahuesla.QuestionFormatter.ask_question(answers, :team_name, "Whats your team name")
   end
 
   defp get_project_desc(answers) do
-    ask_question(answers, :project, "We are going to umma hüsla this project")
+    Ummahuesla.QuestionFormatter.ask_question(answers, :project, "We are going to umma hüsla this project")
   end
 
   defp get_searching_for(answers) do
     alist = ["hardware", "ideas", "love"]
-
-    IO.puts "We are going to umma hüsla a project and searching for?"
-    options_question(alist)
-
-    input = IO.gets "[1,2,3]" <> "\n"
-    answer_value = save_answer(alist, cast_input(input))
+    question =  "We are going to umma hüsla a project and searching for?"
+    answer_value = Ummahuesla.QuestionFormatter.ask_option_question(alist, question)
     Map.put(answers, :searching_for, answer_value)
   end
 
   defp get_gender(answers) do
     alist = ["Girl", "Dude", "neither & nor"]
-
-    IO.puts "What's your gender?"
-    options_question(alist)
-
-    input = IO.gets "[1,2,3]" <> "\n"
-    answer_value = save_answer(alist, cast_input(input))
+    answer_value = Ummahuesla.QuestionFormatter.ask_option_question(alist, "What's your gender?")
     Map.put(answers, :gender, answer_value)
   end
 
   defp get_size(answers) do
     alist = ["S", "M", "L", "XL", "Don't wanna talk about it"]
-    IO.puts "T-Shirt Size?"
-    options_question(alist)
-
-    input = IO.gets "[1,2,3,4,5]" <> "\n"
-    answer_value = save_answer(alist, cast_input(input))
+    answer_value = Ummahuesla.QuestionFormatter.ask_option_question(alist, "T-Shirt Size?")
     Map.put(answers, :size, answer_value)
   end
 
-  defp ask_question(answers, key, question) do
-    IO.puts ""
-    name = IO.gets question <> "\n"
-    Map.put(answers, key, String.trim(name))
-  end
-
-  defp save_answer(list, n) when n <= length(list) do
-    Enum.at(list, n - 1)
-  end
-
-  defp save_answer(list, n) do
-    IO.puts ""
-    answer = IO.gets "Please answer with #{Enum.join(1..(n-2), ", ")} or #{length(list)}" <> "\n"
-    save_answer(list, String.to_integer(String.trim(answer)))
-  end
-
-  defp options_question(list) do
-    list
-      |> Enum.with_index
-      |> Enum.each(fn({x, i}) ->
-        IO.puts("#{i+1}) #{x}")
-      end)
-    IO.puts ""
-  end
-
-  defp cast_input(input) do
-    input
-    |> String.trim
-    |> String.to_integer
+  defp ask_option_question(alist, question) do
+    Ummahuesla.QuestionFormatter.ask_option_question(alist, question)
   end
 end
