@@ -8,7 +8,8 @@ defmodule Ummahuesla.FormsInteractor do
     work_for: :'entry_1248925610',
     project: :'entry.1092327792',
     searching_for: 'entry.2014663631',
-    gender: 'entry.272567456'
+    gender: 'entry.272567456',
+    size: 'entry.2095975789'
   }
   def form_ids, do: @form_ids
 
@@ -33,12 +34,13 @@ defmodule Ummahuesla.FormsInteractor do
   end
 
   defp say_thanks { :ok, response } do
-    IO.puts inspect response
+    #IO.puts inspect response
     IO.puts ""
     IO.puts ""
     IO.puts ""
-    IO.puts "Erfolgreich registriert! Ihr seid beim #UH17 dabei!"
+    IO.puts "Erfolgreich registriert! Du bist beim #UH17 dabei!"
     IO.puts " "
+    IO.puts "... jedes Team Mitglied muss sich einzeln registrieren"
     str = """
      __       __   ______   __    __  ________        ______  ________
    |  \\     /  \\ /      \\ |  \\  /  \\|        \\      |      \\|        \\

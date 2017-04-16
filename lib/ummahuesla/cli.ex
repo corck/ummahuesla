@@ -3,24 +3,20 @@ defmodule Ummahuesla.CLI do
   def run do
     %{}
     |> get_name
-    |> get_email
-    |> Ummahuesla.TeamQuestions.get_team
-    |> get_team_name
-    |> Ummahuesla.TeamQuestions.enough_work_for
-    |> get_project_desc
-    |> get_searching_for
+    #|> get_email
+    #|> Ummahuesla.TeamQuestions.get_team
+    #|> get_team_name
+    #|> Ummahuesla.TeamQuestions.enough_work_for
+    #|> get_project_desc
+    #|> get_searching_for
     |> get_gender
-    #|> get_tshirt_size
+    |> get_size
     |> Ummahuesla.FormsInteractor.submit
     #|> IO.inspect
   end
 
   defp get_name(answers) do
     ask_question(answers, :name, "Whats your name")
-  end
-
-  defp get_tshirt_size(answers) do
-    ask_question(answers, :tshirt, "Whats your t-shirt size(s)")
   end
 
   defp get_email(answers) do
@@ -55,6 +51,16 @@ defmodule Ummahuesla.CLI do
     input = IO.gets "[1,2,3]" <> "\n"
     answer_value = save_answer(alist, cast_input(input))
     Map.put(answers, :gender, answer_value)
+  end
+
+  defp get_size(answers) do
+    alist = ["S", "M", "L", "XL", "Don't wanna talk about it"]
+    IO.puts "T-Shirt Size?"
+    options_question(alist)
+
+    input = IO.gets "[1,2,3,4,5]" <> "\n"
+    answer_value = save_answer(alist, cast_input(input))
+    Map.put(answers, :size, answer_value)
   end
 
   defp ask_question(answers, key, question) do
