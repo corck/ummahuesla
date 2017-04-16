@@ -12,6 +12,8 @@ defmodule Ummahuesla.CLI do
     |> get_gender
     #|> get_size
     |> get_profession
+    |> get_diet
+    |> get_sleep
     |> Ummahuesla.FormsInteractor.submit
     #|> IO.inspect
   end
@@ -64,8 +66,20 @@ defmodule Ummahuesla.CLI do
     ask_options(answers, p)
   end
 
-  defp ask_option_question(alist, question) do
-    Ummahuesla.QuestionFormatter.ask_option_question(alist, question)
+  defp get_diet(answers) do
+    p = %{ q: "Diet?",
+          options: ["kosher", "veggie", "vegan", "no pig", "meat, pasta, chicken"],
+          key: :diet
+        }
+    ask_options(answers, p)
+  end
+
+  defp get_sleep(answers) do
+    p = %{ q: "Sleep",
+          options: ["I will sleep at home", "sleep is for donkeys", "I will sleep at the location"],
+          key: :sleep
+        }
+    ask_options(answers, p)
   end
 
   defp ask_options(answers, %{q: question, options: list, key: key}) do

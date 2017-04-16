@@ -10,7 +10,9 @@ defmodule Ummahuesla.FormsInteractor do
     searching_for: 'entry.2014663631',
     gender: 'entry.272567456',
     size: 'entry.2095975789',
-    profession: 'entry.1670056304'
+    profession: 'entry.1670056304',
+    diet: 'entry.1855741580',
+    sleep: 'entry.1933676789'
   }
   def form_ids, do: @form_ids
 
