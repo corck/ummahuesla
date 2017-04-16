@@ -14,6 +14,7 @@ defmodule Ummahuesla.CLI do
     |> get_profession
     |> get_diet
     |> get_sleep
+    |> get_make_it_sentence
     |> Ummahuesla.FormsInteractor.submit
     #|> IO.inspect
   end
@@ -80,6 +81,10 @@ defmodule Ummahuesla.CLI do
           key: :sleep
         }
     ask_options(answers, p)
+  end
+
+  defp get_make_it_sentence(answers) do
+    Ummahuesla.QuestionFormatter.ask_question(answers, :sentence, "Please finish the following sentence:\nMAKE IT...")
   end
 
   defp ask_options(answers, %{q: question, options: list, key: key}) do

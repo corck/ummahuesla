@@ -12,7 +12,8 @@ defmodule Ummahuesla.FormsInteractor do
     size: 'entry.2095975789',
     profession: 'entry.1670056304',
     diet: 'entry.1855741580',
-    sleep: 'entry.1933676789'
+    sleep: 'entry.1933676789',
+    sentence: 'entry.825156911'
   }
   def form_ids, do: @form_ids
 
