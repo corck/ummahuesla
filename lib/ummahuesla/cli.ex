@@ -24,7 +24,7 @@ defmodule Ummahuesla.CLI do
   end
 
   defp get_email(answers) do
-    Ummahuesla.QuestionFormatter.ask_question(answers, :email, "Whats your contact email")
+    Ummahuesla.Email.get_email(answers)
   end
 
   defp get_team_name(answers) do
