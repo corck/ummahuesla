@@ -39,12 +39,10 @@ defmodule Ummahuesla.FormsInteractor do
 
   defp say_thanks { :ok, response } do
     #IO.puts inspect response
+    IO.puts "\n\n"
+    IO.puts "Registration successful! See you @ #UH17"
     IO.puts ""
-    IO.puts ""
-    IO.puts ""
-    IO.puts "Erfolgreich registriert! Du bist beim #UH17 dabei!"
-    IO.puts " "
-    IO.puts "... jedes Team Mitglied muss sich einzeln registrieren"
+    IO.puts "... please remember that every team member has to register on his own"
     str = """
      __       __   ______   __    __  ________        ______  ________
    |  \\     /  \\ /      \\ |  \\  /  \\|        \\      |      \\|        \\
