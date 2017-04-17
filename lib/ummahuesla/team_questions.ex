@@ -2,11 +2,11 @@ defmodule Ummahuesla.TeamQuestions do
 
   def get_team(answers) do
     question = '''
-      Team
+
+    Do you have a team?
       1) still searching for a team
       2) overrated. Me is the only team I want
       3) already have one
-
     '''
     IO.puts question
 
@@ -17,16 +17,16 @@ defmodule Ummahuesla.TeamQuestions do
 
   def enough_work_for(answers) do
     question = '''
-      There is enough work in my team for
-      (be great an let others be part of your team)
 
-      1)
-      2)
-      3)
-      4)
-      5)
+    There is enough work in my team for
+    (be great an let others be part of your team)
+
+      1) 1
+      2) 2
+      3) 3
+      4) 4
+      5) 5
       6) the exact number of dudes the team has already
-
     '''
     IO.puts question
 

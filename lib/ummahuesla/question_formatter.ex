@@ -1,6 +1,8 @@
 defmodule Ummahuesla.QuestionFormatter do
   def ask_option_question(list, question) do
+    IO.puts "\n"
     IO.puts question
+    IO.puts ""
     options_question(list)
 
     input = IO.gets format_list_options(list) <> "\n"
@@ -13,7 +15,7 @@ defmodule Ummahuesla.QuestionFormatter do
     |> Enum.each(fn({x, i}) ->
       IO.puts("#{i+1}) #{x}")
     end)
-    IO.puts ""
+    IO.puts("")
   end
 
   defp format_list_options(list) do
