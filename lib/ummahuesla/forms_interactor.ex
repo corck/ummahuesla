@@ -37,7 +37,7 @@ defmodule Ummahuesla.FormsInteractor do
     end)
   end
 
-  defp say_thanks { :ok, response } do
+  defp say_thanks { :ok, _response } do
     #IO.puts inspect response
     IO.puts "\n\n"
     IO.puts "Registration successful! See you @ #UH17"

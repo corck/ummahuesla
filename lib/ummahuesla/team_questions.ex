@@ -39,7 +39,7 @@ defmodule Ummahuesla.TeamQuestions do
     team_answer(n)
   end
 
-  defp parse_team(n) do
+  defp parse_team(_n) do
     IO.puts ""
     answer = IO.gets "Please answer with '1', '2' or '3'" <> "\n"
     parse_team(String.to_integer(String.trim(answer)))

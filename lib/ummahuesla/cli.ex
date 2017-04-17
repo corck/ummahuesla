@@ -1,6 +1,6 @@
 defmodule Ummahuesla.CLI do
 
-  def run do
+  def main(_argv) do
     %{}
     |> get_name
     |> get_email
