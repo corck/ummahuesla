@@ -84,7 +84,7 @@ defmodule Ummahuesla.CLI do
   end
 
   defp get_make_it_sentence(answers) do
-    Ummahuesla.QuestionFormatter.ask_question(answers, :sentence, "Please finish the following sentence:\nMAKE IT...")
+    Ummahuesla.MakeIt.get_make_it(answers)
   end
 
   defp ask_options(answers, %{q: question, options: list, key: key}) do
