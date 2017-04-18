@@ -4,18 +4,18 @@ defmodule Ummahuesla.CLI do
     welcome()
     %{}
     |> get_name
-    |> get_email
-    |> Ummahuesla.TeamQuestions.get_team
-    |> get_team_name
-    |> Ummahuesla.TeamQuestions.enough_work_for
-    |> get_project_desc
-    |> get_searching_for
-    |> get_gender
-    |> get_size
-    |> get_profession
-    |> get_diet
-    |> get_sleep
-    |> get_make_it_sentence
+    # |> get_email
+    # |> Ummahuesla.TeamQuestions.get_team
+    # |> get_team_name
+    # |> Ummahuesla.TeamQuestions.enough_work_for
+    # |> get_project_desc
+    # |> get_searching_for
+    # |> get_gender
+    # |> get_size
+    # |> get_profession
+    # |> get_diet
+    # |> get_sleep
+    # |> get_make_it_sentence
     |> Ummahuesla.FormsInteractor.submit
     #|> IO.inspect
   end
