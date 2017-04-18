@@ -15,7 +15,7 @@ defmodule Ummahuesla.FormsInteractor do
     sleep: 'entry.1933676789',
     sentence: 'entry.825156911'
   }
-  
+
   def form_ids, do: @form_ids
 
   def submit(data \\ %{}) do
@@ -41,8 +41,12 @@ defmodule Ummahuesla.FormsInteractor do
   defp say_thanks { :ok, _response } do
     #IO.puts inspect response
     IO.puts "\n\n"
-    IO.puts "Registration successful! See you @ #UH17"
-    IO.puts ""
+    IO.puts "Registration successful!\n"
+    IO.puts """
+    On behalf of the Uma hüsla crew, this formular wants to say thank you for joining us.
+    We are looking forward to seeing you on the 09. and 10. of june.
+    For the saftey of the event please don’t forget to share the word. Then the word is the bird.
+    """
     IO.puts "... please remember that every team member has to register on his own"
     str = """
      __       __   ______   __    __  ________        ______  ________

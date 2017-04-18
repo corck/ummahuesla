@@ -1,6 +1,7 @@
 defmodule Ummahuesla.CLI do
 
   def main(_argv) do
+    welcome()
     %{}
     |> get_name
     |> get_email
@@ -90,5 +91,23 @@ defmodule Ummahuesla.CLI do
   defp ask_options(answers, %{q: question, options: list, key: key}) do
     answer_value = Ummahuesla.QuestionFormatter.ask_option_question(list, question)
     Map.put(answers, key, answer_value)
+  end
+
+  defp welcome do
+    str = """
+     __    __  __    __    __    ________
+   |  \\  |  \\|  \\  |  \\ _/  \\  |        \\
+   | $$  | $$| $$  | $$|   $$   \\$$$$$$$$
+   | $$  | $$| $$__| $$ \\$$$$      /  $$
+   | $$  | $$| $$    $$  | $$     /  $$
+   | $$  | $$| $$$$$$$$  | $$    /  $$
+   | $$__/ $$| $$  | $$ _| $$_  /  $$
+     \\$$    $$| $$  | $$|   $$ \\|  $$
+      \\$$$$$$  \\$$   \\$$ \\$$$$$$ \\$$
+
+    """
+    IO.puts "\nRegistration for\n"
+    IO.puts str
+    IO.puts "\nGreat to have you with us!!\n"
   end
 end
