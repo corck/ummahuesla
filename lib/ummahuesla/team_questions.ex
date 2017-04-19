@@ -54,7 +54,7 @@ defmodule Ummahuesla.TeamQuestions do
 
   defp parse_work_for({n, _}) when n < 6, do: n
 
-  defp parse_work_for({n, _}), do: "the exact number of dudes the team has already"
+  defp parse_work_for({_n, _}), do: "the exact number of dudes the team has already"
 
   defp parse_work_for(_) do
     IO.puts ""

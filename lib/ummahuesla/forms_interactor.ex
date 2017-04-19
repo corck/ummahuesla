@@ -40,12 +40,12 @@ defmodule Ummahuesla.FormsInteractor do
   end
 
   defp say_thanks { :ok, response } do
-    IO.puts inspect response.body
+    #IO.puts inspect response.body
     if String.match?(response.body, ~r/thank you/) do
       IO.puts "\n\n"
       IO.puts "Registration successful!\n"
       IO.puts """
-      On behalf of the Umma hüsla crew, this formular wants to say thank you for joining us.
+      On behalf of the Umma hüsla crew, this terminal wants to say thank you for joining us.
       We are looking forward to seeing you on the 09. and 10. of june.
       For the saftey of the event please don’t forget to share the word. Then the word is the bird.
       """
