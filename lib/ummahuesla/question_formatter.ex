@@ -6,7 +6,7 @@ defmodule Ummahuesla.QuestionFormatter do
     options_question(list)
 
     input = IO.gets format_list_options(list) <> "\n"
-    save_answer(list, cast_input(input))
+    save_answer(list, Integer.parse(String.trim(input)))
   end
 
   defp options_question(list) do
@@ -24,25 +24,20 @@ defmodule Ummahuesla.QuestionFormatter do
     "[" <> str <> "]"
   end
 
-  defp cast_input(input) do
-    input
-    |> String.trim
-    |> String.to_integer
-  end
-
   def ask_question(answers, key, question) do
     IO.puts ""
     name = IO.gets question <> "\n"
     Map.put(answers, key, String.trim(name))
   end
 
-  defp save_answer(list, n) when n <= length(list) do
+  defp save_answer(list, {n, _}) when n <= length(list) do
     Enum.at(list, n - 1)
   end
 
-  defp save_answer(list, n) do
+  defp save_answer(list, _) do
+    n = length(list)
     IO.puts ""
     answer = IO.gets "Please answer with #{Enum.join(1..(n-2), ", ")} or #{length(list)}" <> "\n"
-    save_answer(list, String.to_integer(String.trim(answer)))
+    save_answer(list, Integer.parse(String.trim(answer)))
   end
 end

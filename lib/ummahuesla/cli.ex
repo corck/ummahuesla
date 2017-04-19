@@ -4,18 +4,19 @@ defmodule Ummahuesla.CLI do
     welcome()
     %{}
     |> get_name
-    # |> get_email
-    # |> Ummahuesla.TeamQuestions.get_team
-    # |> get_team_name
-    # |> Ummahuesla.TeamQuestions.enough_work_for
-    # |> get_project_desc
-    # |> get_searching_for
-    # |> get_gender
-    # |> get_size
-    # |> get_profession
-    # |> get_diet
-    # |> get_sleep
-    # |> get_make_it_sentence
+    |> get_email
+    |> Ummahuesla.TeamQuestions.get_team
+    |> get_team_name
+    |> Ummahuesla.TeamQuestions.enough_work_for
+    |> get_project_desc
+    |> get_searching_for
+    |> get_gender
+    |> get_size
+    |> get_profession
+    |> get_diet
+    |> get_sleep
+    |> get_make_it_sentence
+    |> get_further_questions
     |> Ummahuesla.FormsInteractor.submit
     #|> IO.inspect
   end
@@ -39,7 +40,7 @@ defmodule Ummahuesla.CLI do
   defp get_searching_for(answers) do
     p = %{ q: "We are going to umma hüsla a project and searching for?",
           options: ["hardware", "ideas", "love"],
-          key: :gender
+          key: :searching_for
         }
     ask_options(answers, p)
   end
@@ -91,6 +92,10 @@ defmodule Ummahuesla.CLI do
   defp ask_options(answers, %{q: question, options: list, key: key}) do
     answer_value = Ummahuesla.QuestionFormatter.ask_option_question(list, question)
     Map.put(answers, key, answer_value)
+  end
+
+  defp get_further_questions(answers) do
+      Ummahuesla.QuestionFormatter.ask_question(answers, :questions, "Hä? Like super Hä?\nFor any further questions, drop us a line now.\n")
   end
 
   defp welcome do

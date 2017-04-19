@@ -1,6 +1,6 @@
 defmodule Ummahuesla.MakeIt do
   def get_make_it(answers) do
-    word = IO.gets "Please finish the following sentence:\nMAKE IT... (max 8 characters)"
+    word = IO.gets "Please finish the following sentence:\nMAKE IT... (max 8 characters)\n"
     val = do_get_make_it(word, word_length(word))
     Map.put(answers, :sentence, String.trim(val))
   end

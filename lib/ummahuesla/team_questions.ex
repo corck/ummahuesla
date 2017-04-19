@@ -11,7 +11,7 @@ defmodule Ummahuesla.TeamQuestions do
     IO.puts question
 
     input = IO.gets "[1,2,3]" <> "\n"
-    answer = parse_team(String.to_integer(String.trim(input)))
+    answer = parse_team(Integer.parse(String.trim(input)))
     Map.put(answers, :team, answer)
   end
 
@@ -31,18 +31,18 @@ defmodule Ummahuesla.TeamQuestions do
     IO.puts question
 
     input = IO.gets "[1,2,3,4,5,6]" <> "\n"
-    answer = parse_work_for(String.to_integer(String.trim(input)))
+    answer = parse_work_for(Integer.parse(String.trim(input)))
     Map.put(answers, :work_for, answer)
   end
 
-  defp parse_team(n) when n < 4 do
+  defp parse_team({n, _}) when n < 4 do
     team_answer(n)
   end
 
   defp parse_team(_n) do
     IO.puts ""
     answer = IO.gets "Please answer with '1', '2' or '3'" <> "\n"
-    parse_team(String.to_integer(String.trim(answer)))
+    parse_team(Integer.parse(String.trim(answer)))
   end
 
   defp team_answer(n) do
@@ -52,13 +52,13 @@ defmodule Ummahuesla.TeamQuestions do
     Enum.at(answers, n-1)
   end
 
-  defp parse_work_for(n) when n < 6, do: n
+  defp parse_work_for({n, _}) when n < 6, do: n
 
-  defp parse_work_for(6), do: "the exact number of dudes the team has already"
+  defp parse_work_for({n, _}), do: "the exact number of dudes the team has already"
 
   defp parse_work_for(_) do
     IO.puts ""
     answer = IO.gets "Please answer with one of 1-6" <> "\n"
-    parse_work_for(String.to_integer(String.trim(answer)))
+    parse_work_for(Integer.parse(String.trim(answer)))
   end
 end

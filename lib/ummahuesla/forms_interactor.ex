@@ -13,7 +13,8 @@ defmodule Ummahuesla.FormsInteractor do
     profession: 'entry.1670056304',
     diet: 'entry.1855741580',
     sleep: 'entry.1933676789',
-    sentence: 'entry.825156911'
+    sentence: 'entry.825156911',
+    questions: 'entry.1152090245'
   }
 
   def form_ids, do: @form_ids
@@ -25,7 +26,7 @@ defmodule Ummahuesla.FormsInteractor do
   end
 
   defp post_data(data) do
-    form_id = "1FAIpQLSedG8w0bxHmZzvFu9_NKWeZZiXOBkPThD7aDyfvuGn-ZTpQFQ"
+    form_id = "1FAIpQLSclEHeh8A0o5WYPhthD5FKwDmuQReqkzn-ZFjH9BDACJxbNnQ"
     url = "https://docs.google.com/forms/d/e/#{form_id}/formResponse"
     say_thanks HTTPoison.post url, {:form, data}, []
   end
@@ -39,8 +40,8 @@ defmodule Ummahuesla.FormsInteractor do
   end
 
   defp say_thanks { :ok, response } do
+    IO.puts inspect response.body
     if String.match?(response.body, ~r/thank you/) do
-      IO.puts inspect response.body
       IO.puts "\n\n"
       IO.puts "Registration successful!\n"
       IO.puts """
